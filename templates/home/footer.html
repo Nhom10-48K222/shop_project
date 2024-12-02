@@ -1,0 +1,70 @@
+{% load static %} {% block start %}
+
+<footer class="footer">
+  <a href="#" class="scroll-top" style="display: flex">
+    <i class="lni lni-chevron-up"></i>
+  </a>
+
+  <div class="footer-medium" style="padding-top: 40px; padding-bottom: 40px;">
+    <div class="container">
+      <div class="bottom-inner">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-footer f-contact">
+              <h3>Liên hệ với chúng tôi</h3>
+              <p class="phone">Phone: +84-366-573-134</p>
+              <p class="mail"><a href="#">lroseshop@gmail.com</a></p>
+              <hr/>
+              <p style="font-size: 42px; font-weight: bold; color: #A67956; font-family: 'Georgia', serif;">L'ROSE</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-footer our-app">
+              <h3>Mobile App</h3>
+              <ul class="app-btn">
+                <li>
+                  <a href="#" style="text-decoration: none;">
+                    <i class="lni lni-apple"></i>
+                    <span class="small-title">Download on the</span>
+                    <span class="big-title">App Store</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="text-decoration: none;">
+                    <i class="lni lni-play-store"></i>
+                    <span class="small-title">Download on the</span>
+                    <span class="big-title">Google Play</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-footer f-link">
+              <h3>Thông tin</h3>
+              <ul>
+                <li><a href="{% url 'about' %}" style="text-decoration: none;>Blog</a></li>
+                <li><a href="{% url 'contact' %}" style="text-decoration: none;">Liên Hệ</a></li>
+                <li><a href="{% url 'shipping-address' %}" style="text-decoration: none;">Giao Hàng</a></li>
+                <li><a href="{% url 'terms-and-conditions' %}" style="text-decoration: none;">Điều khoản và điều kiện</a></li>
+                <li><a href="{% url 'privacy-policy' %}" style="text-decoration: none;">Quyền riêng tư</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-footer f-link">
+              <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+              <ul>
+                <li><a href="#" style="text-decoration: none;">Hướng dẫn đặt hàng tại L'Rose</a></li>
+                <li><a href="#" style="text-decoration: none;">Chính sách bảo hành và đổi sản phẩm</a></li>
+                <li><a href="#" style="text-decoration: none;">Quy định về thanh toán và vận chuyển</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

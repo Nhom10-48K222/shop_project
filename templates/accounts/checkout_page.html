@@ -1,0 +1,214 @@
+{% extends "base/base.html" %}
+{% block title %}Checkout{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block start %}
+    <style>
+        /* General layout */
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #343a40;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content {
+            padding: 40px 0;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .card .form-row {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #ffffff;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+
+        /* Table Styling */
+        .table-shopping-cart {
+            margin-top: 30px;
+            width: 100%;
+            background: #ffffff;
+        }
+
+        .table thead th {
+            color: #495057;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody td {
+            font-size: 0.9rem;
+            vertical-align: middle;
+            color: #495057;
+        }
+
+        .img-sm {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .price-wrap {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .quantity-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+            margin-top: 20px;
+        }
+    </style>
+
+    <section class="section-content padding-y">
+        <div class="container">
+            <h2>Thông tin thanh toán</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card mb-4">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.first_name.id_for_label }}">First name*</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.last_name.id_for_label }}">Last name*</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="{{ form.street.id_for_label }}">
+                                Street*</label>
+                            {{ form.street }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.street_number.id_for_label }}">Street number*</label>
+                            {{ form.street_number }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="{{ form.city.id_for_label }}">City*</label>
+                            {{ form.city }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.zip_code.id_for_label }}">Zip code*</label>
+                            {{ form.zip_code }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.country.id_for_label }}">Country*</label>
+                    {{ form.country }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.phone.id_for_label }}">Phone*</label>
+                    {{ form.phone }}
+                </div>
+
+                <table class="table table-borderless table-shopping-cart">
+                    <thead class="text-muted">
+                    <tr class="small text-uppercase">
+                        <th scope="col">Product</th>
+                        <th scope="col" width="120">Quantity</th>
+                        <th scope="col" width="120">Price</th>
+                        <th scope="col" class="text-right" width="200"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cart_item in cart.cart_items.all %}
+                        <tr>
+                            <td>
+                                <img
+                                        src="/media/{{ cart_item.product.product_images.first.image }}"
+                                        class="img-sm mr-2"
+                                        alt="Product Image"
+                                />
+                                {{ cart_item.product.product_name }}
+                            </td>
+                            <td>
+                                <span class="quantity-text">{{ cart_item.quantity }}</span>
+                            </td>
+                            <td>
+                                <div class="price-wrap">
+                                    <var class="price">${{ cart_item.get_product_price }}</var>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h4>Total price: ${{ cart.get_cart_total }}</h4>
+                <button type="submit" class="btn btn-primary">Payment</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

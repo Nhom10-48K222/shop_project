@@ -1,0 +1,149 @@
+{% load static %}
+
+<style>
+  @media (max-width: 992px) {
+    .widgets-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      flex-wrap: nowrap;
+    }
+
+    .widget-header {
+      margin-right: 10px;
+    }
+
+    .icontext {
+      display: flex;
+      align-items: center;
+    }
+
+    .icontext .text {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .text span {
+      display: block;
+    }
+
+    .text div {
+      display: inline;
+    }
+
+    .logo {
+            font-size: 42px;
+            font-weight: bold;
+            color: #A67956;
+            font-family: 'Georgia', serif;
+    }
+}
+</style>
+
+<header class="section-header">
+  <nav class="navbar navbar-dark navbar-expand-md bg-dark" style="background-color: blanchedalmond !important;">
+    <div class="container">
+      <button
+        class="navbar-toggler ml-auto"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="logo" style="font-size: 42px; font-weight: bold; color: #A67956; font-family: 'Georgia', serif;">L'ROSE</li>
+          <li class="nav-item"><a class="nav-link" style="color: black; margin-left: 150px;" href="{% url 'index' %}">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'contact' %}">Liên hệ</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'about' %}">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'order_history' %}">Đơn hàng</a></li>
+        </ul>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-sm-12">
+          <form method="GET" action="{% url 'product_search' %}" class="search">
+            <div class="input-group w-100">
+              <input type="text" class="form-control" name="q"
+              placeholder="Search" value="{{ query|default:"" }}"/>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 col-8" style="display: contents;">
+          <div class="widgets-wrap float-md-right">
+
+            <!-- Cart Icon with badge -->
+            <div class="widget-header mr-3">
+              <a href="{% url 'cart' %}" class="icon icon-sm rounded-circle border">
+                <i class="fa fa-shopping-cart"></i>
+
+              </a>
+              {% if user.is_authenticated %}
+                <span class="badge badge-pill badge-danger notify">
+                  {{request.user.profile.get_cart_count}}
+                </span>
+              {% else %}
+                <span class="badge badge-pill badge-danger notify"></span>
+              {% endif %}
+            </div>
+
+            <!-- Profile Icon -->
+            <div class="widget-header icontext">
+              {% if user.is_authenticated %}
+                {% if user.profile.profile_image %}
+                  <a href="{% url 'profile' username=user.username %}"
+                  class="icon icon-sm rounded-circle border">
+                    <img
+                      src="{{ user.profile.profile_image.url }}"
+                      alt="Profile Image"
+                      class="rounded-circle"
+                      width="42"
+                      height="42"
+                    />
+                  </a>
+                {% else %}
+                  <a
+                    href="{% url 'profile' username=user.username %}"
+                    class="icon icon-sm rounded-circle border">
+                    <i class="fa fa-user"></i>
+                  </a>
+                {% endif %}
+              {% else %}
+                <a href="{% url 'login' %}" class="icon icon-sm rounded-circle border">
+                  <i class="fa fa-user"></i>
+                </a>
+              {% endif %}
+
+              <!-- Welcome Text and Logout Link -->
+              <div class="text">
+                {% if request.user.is_authenticated %}
+                <span class="text-muted">Welcome, {{ request.user }}!</span>
+                <div>
+                  <a href="{% url 'logout' %}">Logout</a>
+                </div>
+                {% else %}
+                <span class="text-muted">Welcome</span>
+                <div>
+                  <a href="{% url 'login' %}">Sign in</a> |
+                  <a href="{% url 'register' %}">Register</a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

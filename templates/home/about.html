@@ -1,0 +1,54 @@
+{% extends "base/base.html" %} {% load static%}
+{% block title %}About Us{% endblock %} {% block start %}
+<style>
+   .product-item {
+        padding: 15px;
+        width: 300px;
+        text-align: center;
+        border-radius: 5px;
+        margin-left: 50px;
+    }
+    .product-item:hover img {
+        transform: scale(1.05);
+    }
+   .product-list{
+       display: flex;
+       justify-content: center;
+       margin-bottom: 50px;
+   }
+   .Btn-detail{
+       background-color: blanchedalmond;
+       border-radius: 5px;
+       height: 35px;
+       width: 150px;
+       font-size: 17px;
+       cursor: pointer;
+   }
+</style>
+        <div class="main-content">
+             <h2 style = "text-align: center">Blog Sản Phẩm</h2>
+            <hr color="#ddd" width="100%"/>
+            <div class="product-list">
+                    <div class="product-item">
+                        <img src="{% static 'images/quanongrong.jpg' %}" alt="quanongrong" class= "banner-item" style="height: 300px; object-fit: cover;">
+                        <a href="{% url 'article_detail' %}" style="text-decoration: none;"><h4 style="margin-top: 20px;">Váy đầm cho nàng bận rộn: Thanh lịch và tiện lợi</h4></a>
+                        <hr color="#ddd" width="300px" />
+                        <h5>Kiểu dáng áo nữ đẹp, đa dạng kiểu dáng màu sắc cùng họa tiết. Những thiết kế cơ bản không thể thiếu trong tủ đồ phái đẹp. </h5>
+                    </div>
+                    <div class="product-item">
+                        <img src="{% static 'images/Set4.jpg' %}" alt="Set4" class= "banner-item" style="height: 300px; object-fit: cover;">
+                        <a href="{% url 'article_detail' %}" style="text-decoration: none;"><h4 style="margin-top: 20px;">Bật mí 3 bí kíp chọn váy cho người mập cực chuẩn</h4></a>
+                        <hr color="#ddd" width="300px" />
+                        <h5>Những nàng dáng người mập luôn gặp khó khăn trong việc lựa chọn quần áo sao cho thon gọn vóc dáng. Vào ngay đây để L'Rose giúp bạn </h5>
+                    </div>
+                    <div class="product-item">
+                        <img src="{% static 'images/Set9.jpg' %}" alt="Set10" class= "banner-item" style="height: 300px; object-fit: cover;">
+                        <a href="{% url 'article_detail' %}" style="text-decoration: none;"><h4 style="margin-top: 20px;">Top 5 váy nữ dạo phố đẹp chưa bao giờ hết hot</h4></a>
+                        <hr color="#ddd" width="300px" />
+                        <h5>L'Rose gợi ý cho chị em top 5 mẫu váy nữ đẹp để các nàng xúng xính đi dạo phố, xả hơi sau một tuần làm việc căng thẳng. </h5>
+                    </div>
+            </div>
+            <hr color="#ddd" width="100%"/>
+        </div>
+
+{% endblock %}

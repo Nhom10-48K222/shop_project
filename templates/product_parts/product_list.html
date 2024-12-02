@@ -1,0 +1,30 @@
+<!-- Product List -->
+<style>
+    .btn-view {
+        display: inline-block;
+        background-color: blanchedalmond !important;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 10px;
+    }
+</style>
+<div class="row">
+    {% for product in list_products %}
+    <div class="col-md-3">
+      <figure class="card card-product-grid">
+        <div class="img-wrap">
+          <img src="/media/{{product.product_images.first.image}}" />
+        </div>
+        <figcaption class="info-wrap border-top" style="text-align: center;">
+          <a href="{% url 'get_product' product.slug %}" class="title" style="text-decoration: none;">
+            <b>{{ product.product_name }}</b></a>
+          <div class="price mt-2">${{product.price}}.00</div>
+            <a href="{% url 'get_product' product.slug %}" class="btn-view">Xem chi tiết</a>
+        </figcaption>
+      </figure>
+    </div>
+
+    {% endfor %}
+  </div>

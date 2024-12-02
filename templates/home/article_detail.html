@@ -1,0 +1,131 @@
+{% extends "base/base.html" %} {% load static%}
+{% block title %}About Us{% endblock %} {% block start %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Nổi Bật</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .main-content {
+            border-right: 1px solid #ddd;
+        }
+        .featured-articles img {
+            width: 100%;
+            height: auto;
+        }
+        .featured-articles h5 {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+         .post {
+            margin-bottom: 30px;
+        }
+        .post img {
+            width: 100%;
+            height: auto;
+        }
+                .container {
+            margin-top: 30px;
+        }
+        .post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .post img {
+            width: 100%; /* Chiếm 30% chiều rộng */
+            height: auto; /* Giữ tỷ lệ của hình ảnh */
+        }
+        .post-content {
+            padding: 15px;
+            width: 70%; /* Giữ 70% chiều rộng cho phần nội dung */
+        }
+        .post-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .post-description {
+            font-size: 1em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main content -->
+            <div class="col-md-8 main-content" style="text-align: center;">
+                <h1>SANG TRỌNG TỐI THIỂU</h1>
+                <hr/>
+                <p><small>2024/12/01</small></p>
+                <hr/>
+                <p>Theo xu hướng phát triển của thời trang, sự đơn giản và thoải mái đang được ưu tiên hàng đầu.
+                    Càng ngày, những sản phẩm được thiết kế theo phong cách tối giãn những chi tiết và
+                    màu sắc để phù hợp với thị hiếu khách hàng. Chính vì vậy,
+                    những cách ăn mặc tối giãn cũng được quan tâm và
+                    nổi bật trong số đó chính là phong cách thời trang minimalism.</p>
+                    <img src="{% static 'images/set9.jpg' %}" alt="Image Description" class= "img-fluid mt-3">
+
+                <p style="margin-top: 20px;">Phong cách này đã trải qua nhiều thử thách và ý kiến trái chiều để có được vị thế trong làng thời trang như ngày hôm nay.
+                    Đã có rất nhiều nhà thiết kế và người nổi tiếng lăng xê khiến xu hướng này được phủ sóng mạnh mẽ.</p>
+                    <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class= "img-fluid mt-3">
+                <P style="margin-top: 30px;">Các bạn đã từng nghe qua về phong cách thời trang minimalism chưa? Liệu đây có phải là phong cách mà bạn đã đang và sẽ theo đuổi không? Chia sẻ cùng L'ROSE nhé!</P>
+            </div>
+            <!-- Featured articles -->
+            <div class="col-md-4 featured-articles">
+                <h4>TIN NỔI BẬT</h4>
+                    <div class="featured-item mb-4" style="text-align: center;">
+                           <img src="{% static 'images/set9.jpg' %}" alt="Image Description">
+                        <h5><a href="#">MINIMAL CHIC</a></h5>
+                    </div>
+
+                    <div class="featured-item mb-4" style="text-align: center;">
+                           <img src="{% static 'images/set4.jpg' %}" alt="Image Description">
+                        <h5><a href="#">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</a></h5>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <hr/>
+            <h1 class="text-center">L'ROSE</h1>
+            <h5 class="text-center">ĐÓN ĐẦU XU HƯỚNG, ĐỊNH HÌNH PHONG CÁCH</h5>
+        <hr/>
+            <div class="row">
+                <div class="post">
+                    <div class="card">
+                        <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">MINIMAL CHIC</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">SUIT - XU HƯỚNG THỜI TRANG CHO QUÝ CÔ QUYỀN LỰC</h5>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img src="{% static 'images/set9.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">SANG TRONG QUÝ PHÁI</h5>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
