@@ -1,0 +1,135 @@
+{% extends "base/base.html" %} {% load static%}
+{% block title %}Trang chủ{% endblock %} {% block start %}
+<style>
+  /* Banner Styles */
+        .banner-container {
+            position: relative;
+            width: 100%;
+        }
+        .banner {
+            display: flex;
+            transition: transform 1s ease;
+        }
+        /* Banner Control Buttons */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .post {
+            margin-bottom: 30px;
+        }
+        .post img {
+            width: 100%;
+            height: auto;
+        }
+        .post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .post img {
+            width: 100%; /* Chiếm 30% chiều rộng */
+            height: auto; /* Giữ tỷ lệ của hình ảnh */
+        }
+        .post-content {
+            padding: 15px;
+            width: 70%; /* Giữ 70% chiều rộng cho phần nội dung */
+        }
+        .post-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .post-description {
+            font-size: 1em;
+            color: #6c757d;
+        }
+</style>
+  <div class="banner-container">
+      <div class="banner">
+     <img class="mySlides" src="{% static 'images/banner.png' %}" alt="Khuyến mãi đặc biệt">
+     <img class="mySlides" src="{% static 'images/banner2.png' %}" alt="Sản phẩm mới">
+     <img class="mySlides" src="{% static 'images/banner3.png' %}" alt="Bộ sưu tập Yoga">
+     </div>
+     <!-- Navigation Buttons -->
+     <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
+     <button class="next" onclick="plusDivs(1)">&#10095;</button>
+  </div>
+  <div class="container">
+        <hr/>
+            <h1 class="text-center">L'ROSE</h1>
+            <h5 class="text-center">ĐÓN ĐẦU XU HƯỚNG, ĐỊNH HÌNH PHONG CÁCH</h5>
+        <hr/>
+            <div class="row">
+                <div class="post">
+                    <div class="card">
+                        <img src="{% static 'images/set1.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">MINIMAL CHIC</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'images/set2.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'images/set3.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">SUIT - XU HƯỚNG THỜI TRANG CHO QUÝ CÔ QUYỀN LỰC</h5>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img src="{% static 'images/set8.jpg' %}" alt="Image Description" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">SANG TRONG QUÝ PHÁI</h5>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
+</script>
+{% endblock %}

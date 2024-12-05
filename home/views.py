@@ -109,3 +109,6 @@ def privacy_policy(request):
 # blog
 def article_detail(request):
     return render(request, 'home/article_detail.html')
+
+def home(request):
+    return render(request, 'home/home.html')

@@ -1,18 +1,12 @@
-{% extends "base/base.html" %} {% load static%}
+{% extends "base/base.html" %}
+{% load static%}
 {% block title %}About Us{% endblock %} {% block start %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin Nổi Bật</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .main-content {
             border-right: 1px solid #ddd;
         }
         .featured-articles img {
-            width: 100%;
+            width: 70%;
             height: auto;
         }
         .featured-articles h5 {
@@ -26,7 +20,7 @@
             width: 100%;
             height: auto;
         }
-                .container {
+        .containerr {
             margin-top: 30px;
         }
         .post {
@@ -55,8 +49,6 @@
             color: #6c757d;
         }
     </style>
-</head>
-<body>
     <div class="container mt-4">
         <div class="row">
             <!-- Main content -->
@@ -74,7 +66,7 @@
 
                 <p style="margin-top: 20px;">Phong cách này đã trải qua nhiều thử thách và ý kiến trái chiều để có được vị thế trong làng thời trang như ngày hôm nay.
                     Đã có rất nhiều nhà thiết kế và người nổi tiếng lăng xê khiến xu hướng này được phủ sóng mạnh mẽ.</p>
-                    <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class= "img-fluid mt-3">
+                    <img src="{% static 'images/set3.jpg' %}" alt="Image Description" class= "img-fluid mt-3">
                 <P style="margin-top: 30px;">Các bạn đã từng nghe qua về phong cách thời trang minimalism chưa? Liệu đây có phải là phong cách mà bạn đã đang và sẽ theo đuổi không? Chia sẻ cùng L'ROSE nhé!</P>
             </div>
             <!-- Featured articles -->
@@ -86,7 +78,7 @@
                     </div>
 
                     <div class="featured-item mb-4" style="text-align: center;">
-                           <img src="{% static 'images/set4.jpg' %}" alt="Image Description">
+                           <img src="{% static 'images/set3.jpg' %}" alt="Image Description">
                         <h5><a href="#">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</a></h5>
                     </div>
             </div>
@@ -100,13 +92,13 @@
             <div class="row">
                 <div class="post">
                     <div class="card">
-                        <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class="card-img-top">
+                        <img src="{% static 'images/set2.jpg' %}" alt="Image Description" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">MINIMAL CHIC</h5>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="{% static 'images/set4.jpg' %}" alt="Image Description" class="card-img-top">
+                        <img src="{% static 'images/set3.jpg' %}" alt="Image Description" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</h5>
                         </div>
@@ -126,6 +118,4 @@
                 </div>
         </div>
     </div>
-</body>
-</html>
 {% endblock %}

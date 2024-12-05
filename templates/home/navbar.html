@@ -40,6 +40,13 @@
             font-family: 'Georgia', serif;
     }
 }
+  .section-header{
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+  }
 </style>
 
 <header class="section-header">
@@ -59,7 +66,8 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="logo" style="font-size: 42px; font-weight: bold; color: #A67956; font-family: 'Georgia', serif;">L'ROSE</li>
-          <li class="nav-item"><a class="nav-link" style="color: black; margin-left: 150px;" href="{% url 'index' %}">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black; margin-left: 50px;" href="{% url 'home' %}">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'index' %}">Sản Phẩm</a></li>
           <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'contact' %}">Liên hệ</a></li>
           <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'about' %}">Blog</a></li>
           <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'order_history' %}">Đơn hàng</a></li>
