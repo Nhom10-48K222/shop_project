@@ -12,6 +12,12 @@
     transform: scale(2);
     cursor: zoom-out;
   }
+  .btn-col{
+    background-color: blanchedalmond;
+  }
+  .btn:hover {
+    background-color:blanchedalmond !important;
+  }
 </style>
 
 <section class="section-content padding-y">
@@ -157,7 +163,7 @@
               <div class="d-sm-flex mr-2">
                 <a
                   href="{% url 'add_to_cart' product.uid %}?size={{ selected_size }}"
-                  id="add-to-cart-btn" class="btn btn-primary">
+                  id="add-to-cart-btn" class="btn btn-col">
                   <i class="fas fa-shopping-bag mr-1"></i>
                   <span>Thêm vào giỏ hàng</span>
                 </a>

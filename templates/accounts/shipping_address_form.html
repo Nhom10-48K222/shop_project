@@ -56,9 +56,10 @@
 
             {% include "base/alert.html" %}
             <nav class="nav nav-borders">
-                <a class="nav-link ms-0" href="{% url 'profile' username=user.username %}">Profile</a>
-                <a class="nav-link active ms-0" href="{% url 'shipping-address' %}">Address</a>
-                <a class="nav-link ms-0" href="{% url 'change_password' %}">Security</a>
+                <a class="nav-link ms-0" href="{% url 'profile' username=user.username %}">Thông tin</a>
+                <a class="nav-link ms-0" href="{% url 'order_history' %}">Đơn hàng</a>
+                <a class="nav-link active ms-0" href="{% url 'shipping-address' %}">Địa chỉ</a>
+                <a class="nav-link ms-0" href="{% url 'change_password' %}">Đổi mật khẩu</a>
             </nav>
 
             <hr class="mt-0 mb-4"/>
@@ -66,7 +67,7 @@
             <div class="row">
                 <div class="col-xl-20">
                     <div class="card mb-4">
-                        <div class="card-header">Shipping Address</div>
+                        <div class="card-header">Địa chỉ giao hàng</div>
                         <div class="card-body">
 
                             <form method="POST">
@@ -92,8 +93,8 @@
 
                                 <div class="form-group d-flex justify-content-end">
                                     <div class="d-sm-flex">
-                                        <a class="mb-2 mb-sm-0 mr-0 mr-sm-3 btn btn-warning" href="{% url 'index' %}">Back to Home Page</a>
-                                        <button class="btn btn-primary" type="submit">Update Shipping Address</button>
+                                        <a class="mb-2 mb-sm-0 mr-0 mr-sm-3 btn btn-warning" href="{% url 'index' %}">Trở lại Trang Chủ</a>
+                                        <button class="btn btn-primary" type="submit">Update Địa chỉ giao hàng</button>
                                     </div>
                                 </div>
 
