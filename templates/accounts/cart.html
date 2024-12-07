@@ -35,7 +35,6 @@
                                                 >
                                                     {{ cart_item.product.product_name }}
                                                 </a>
-
                                                 <p class="text-muted small">
                                                     {% if cart_item.size_variant %}
                                                         Size: {{ cart_item.size_variant.size_name }}<br/>
@@ -70,21 +69,11 @@
                                         <!-- price-wrap .// -->
                                     </td>
                                     <td class="text-right">
-                                        <a
-                                                data-original-title="Save to Wishlist"
-                                                title=""
-                                                href=""
-                                                class="btn btn-light"
-                                                data-toggle="tooltip"
-                                        >
-                                            <i class="fa fa-heart"></i>
-                                        </a>
                                         <a href="{% url 'remove_cart' cart_item.uid %}" class="btn btn-danger">
                                             Xóa
                                         </a>
                                     </td>
                                 </tr>
-
                             {% endfor %}
                             </tbody>
                         </table>
@@ -123,8 +112,8 @@
                                                 placeholder="mã giảm giá"
                                         />
                                         <span class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-                  </span>
+                                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        </span>
                                     </div>
                                 </div>
 

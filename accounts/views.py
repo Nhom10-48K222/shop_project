@@ -33,9 +33,9 @@ def login_page(request):
             messages.warning(request, 'Account not found!')
             return HttpResponseRedirect(request.path_info)
 
-        if not user_obj[0].profile.is_email_verified:
-            messages.error(request, 'Account not verified!')
-            return HttpResponseRedirect(request.path_info)
+        #if not user_obj[0].profile.is_email_verified:
+           # messages.error(request, 'Account not verified!')
+           # return HttpResponseRedirect(request.path_info)
 
         # then authenticate user
         user_obj = authenticate(username=username, password=password)
@@ -47,7 +47,7 @@ def login_page(request):
             if url_has_allowed_host_and_scheme(url=next_url, allowed_hosts=request.get_host()):
                 return redirect(next_url)
             else:
-                return redirect('index')
+                return redirect('home')
 
         messages.warning(request, 'Invalid credentials.')
         return HttpResponseRedirect(request.path_info)
@@ -90,7 +90,7 @@ def register_page(request):
 def user_logout(request):
     logout(request)
     messages.warning(request, "Logged Out Successfully!")
-    return redirect('index')
+    return redirect('home')
 
 
 @login_required
@@ -475,7 +475,7 @@ def register_page(request):
             messages.success(request, 'Registration successful and logged in!')
 
             # Chuyển hướng đến trang chủ hoặc trang tiếp theo
-            next_url = request.GET.get('next', 'index')  # Mặc định đến 'index' nếu không có 'next'
+            next_url = request.GET.get('next', 'home')  # Mặc định đến 'index' nếu không có 'next'
             return redirect(next_url)
 
         messages.warning(request, 'Error logging in after registration.')
