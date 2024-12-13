@@ -60,39 +60,45 @@
             <h3 class="mb-4">Chi tiết đơn hàng</h3>
             <div class="card mb-4">
               <div class="card-body">
-                <h5 class="card-title">Order Information</h5>
+                <h5 class="card-title">Thông tin đặt hàng</h5>
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Order ID #:</dt>
+                  <dt style="width: 190px">Mã đơn hàng #:</dt>
                   <dd class="text-right">
                     <strong>{{ order.order_id }}</strong>
                   </dd>
                 </dl>
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Place on:</dt>
+                  <dt style="width: 190px">Ngày đặt hàng:</dt>
                   <dd class="text-right">
                     <strong>{{ order.order_date|date:"F j, Y" }}</strong>
                   </dd>
                 </dl>
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Customer:</dt>
+                  <dt style="width: 190px">Tên khách hàng:</dt>
                   <dd class="text-right">
                     <strong>{{ order.user.get_full_name }}</strong>
                   </dd>
                 </dl>
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Payment Status:</dt>
+                  <dt style="width: 135px">Trạng thái thanh toán:</dt>
                   <dd class="text-right">
                     <strong>{{ order.payment_status }}</strong>
                   </dd>
                 </dl>
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Payment Mode:</dt>
+                  <dt style="width: 135px">Trạng thái đơn hàng:</dt>
+                  <dd class="text-right">
+                    <strong>{{ order.product_status }}</strong>
+                  </dd>
+                </dl>
+                <dl class="dlist-align">
+                  <dt style="width: 190px">Phương thức thanh toán:</dt>
                   <dd class="text-right">
                     <strong>{{ order.payment_mode }}</strong>
                   </dd>
                 </dl>
                 <dl class="dlist-align">
-                  <dt style="width: 136px">Shipping Address:</dt>
+                  <dt style="width: 190px">Địa chỉ giao hàng:</dt>
                   <dd class="text-right">
                     <strong>{{ order.shipping_address|default:"Not Provided" }}</strong>
                   </dd>
@@ -106,7 +112,7 @@
           <main class="col-md-4">
             <div class="card" style="margin-top: 59px">
               <div class="card-body">
-                <h5 class="card-title">Payment Summary</h5>
+                <h5 class="card-title">Tổng tiền thanh toán</h5>
                 <dl class="dlist-align">
                   <dt style="width: 135px">Item(s) Subtotal:</dt>
                   <dd class="text-right">
@@ -115,7 +121,7 @@
                 </dl>
 
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Coupon Applied:</dt>
+                  <dt style="width: 135px">Phiếu giảm giá:</dt>
                   <dd class="text-right">
                     <strong
                       >${{ order.coupon.discount_amount|default:"0" }}</strong
@@ -124,7 +130,7 @@
                 </dl>
 
                 <dl class="dlist-align">
-                  <dt style="width: 135px">Grand Total:</dt>
+                  <dt style="width: 135px">Tổng tiền:</dt>
                   <dd class="text-right">
                     <strong>${{ order.grand_total }}</strong>
                   </dd>

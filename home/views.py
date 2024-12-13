@@ -89,7 +89,8 @@ def contact(request):
 
         return render(request, 'home/contact.html')
 
-    except Exception:
+    except Exception as err:
+        print(err)
         messages.warning(request, 'Invalid Email Address!')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -11,7 +11,6 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
-
 from accounts.forms import UserUpdateForm, UserProfileForm, ShippingAddressForm, CustomPasswordChangeForm
 from accounts.models import Profile, Cart, CartItem, Order, OrderItem
 from home.models import ShippingAddress
@@ -130,7 +129,7 @@ def cart(request):
     try:
         cart_obj = Cart.objects.get(is_paid=False, user=user)
 
-    except Exception as e:
+    except Exception:
         messages.warning(request, "Your cart is empty. Please sign in or add a product to cart.")
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -253,12 +252,13 @@ def create_order(cart, shipping_address=None):
     order = Order.objects.create(
         user=cart.user,
         order_id=cart.razorpay_order_id,
-        payment_status='Paid',
+        payment_status='Thành công',
         payment_mode='COD',
         shipping_address=shipping_address if shipping_address else cart.user.profile.shipping_address,
         order_total_price=cart.get_cart_total(),
         coupon=cart.coupon,
-        grand_total=cart.get_cart_total_price_after_coupon()
+        grand_total=cart.get_cart_total_price_after_coupon(),
+        product_status = 'Chờ xác nhận'
     )
 
     # Tạo các sản phẩm trong đơn hàng
@@ -272,7 +272,6 @@ def create_order(cart, shipping_address=None):
         )
 
     return order
-
 
 @require_POST
 @login_required
