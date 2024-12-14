@@ -40,9 +40,6 @@ class ShippingAddressForm(forms.ModelForm):
             'country',
             'phone'
         ]
-# models.py
-from django.db import models
-
 class ContactMessage(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)

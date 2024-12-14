@@ -75,12 +75,6 @@
               </dd>
             </dl>
             <dl class="dlist-align">
-              <dt style="width: 190px;">Trạng thái đơn hàng:</dt>
-              <dd class="text-right">
-                <strong>{{ order.product_status }}</strong>
-              </dd>
-            </dl>
-            <dl class="dlist-align">
               <dt style="width: 190px;">Phương thức thanh toán:</dt>
               <dd class="text-right">
                 <strong>{{ order.payment_mode }}</strong>
@@ -127,16 +121,10 @@
         </div>
       </main>
       <!-- Payment Summary End -->
-
     </div>
     <a href="{% url 'order_history' %}" class="btn btn-light">
     <i class="fa fa-chevron-left"></i> Quay trở lại
     </a>
   </div>
-
-   <!-- <form action="{% url 'review_Order'%}" method="post">
-      {% csrf_token %}
-        <button type="submit">Nhận hàng</button>
-    </form>-->
 </section>
 {% endblock %}
