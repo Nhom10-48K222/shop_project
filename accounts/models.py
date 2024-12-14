@@ -97,6 +97,7 @@ class Order(BaseModel):
     order_total_price = models.DecimalField(max_digits=10, decimal_places=2)
     coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2)
+    order_status = models.CharField(max_length=255, default='Chờ xác nhận')
     def __str__(self):
         return f"Order {self.order_id} by {self.user.username}"
 

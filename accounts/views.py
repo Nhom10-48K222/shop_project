@@ -258,6 +258,7 @@ def create_order(cart, shipping_address=None):
         order_total_price=cart.get_cart_total(),
         coupon=cart.coupon,
         grand_total=cart.get_cart_total_price_after_coupon(),
+        order_status = 'Chờ xác nhận',
     )
 
     # Tạo các sản phẩm trong đơn hàng
