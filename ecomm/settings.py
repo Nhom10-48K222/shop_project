@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,10 +30,9 @@ DEBUG = config("DEBUG")
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
-SITE_ID = 2 #added this line
+SITE_ID = 2  # added this line
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Apps
     'products',
     'accounts',
     'home',
@@ -50,8 +52,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google', # For Google authentication
-    'allauth.socialaccount.providers.facebook', # For Facebook authentication
+    'allauth.socialaccount.providers.google',  # For Google authentication
+    'allauth.socialaccount.providers.facebook',  # For Facebook authentication
 
     # Added belows line for crispy forms
     'django_countries',
@@ -63,7 +65,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SOCIAL_AUTH_GOOGLE_KEY = config('SOCIAL_AUTH_GOOGLE_KEY')
 SOCIAL_AUTH_GOOGLE_SECRET = config('SOCIAL_AUTH_GOOGLE_SECRET')
-# Facebook API KEYS
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -104,7 +105,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', #added this line
+    'allauth.account.middleware.AccountMiddleware',  # added this line
 ]
 
 ROOT_URLCONF = 'ecomm.urls'
@@ -119,14 +120,13 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request', # Added this line for authentication purpose
+                'django.template.context_processors.request',  # Added this line for authentication purpose
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'ecomm.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -137,7 +137,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -157,7 +156,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -168,7 +166,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
