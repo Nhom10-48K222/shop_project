@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.core.validators import validate_email
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .models import ContactMessage
 
 # Create your views here.
 
@@ -82,7 +83,12 @@ def contact(request):
                 [email_from],
                 fail_silently=False,
             )
-
+            ContactMessage.objects.create(
+                first_name=message_name,
+                last_name=message_lname,
+                email=message_email,
+                message=message
+            )
             messages.success(
                 request, f'Hii, {message_name}! Thank you for your message. We will get back to you soon...')
             return HttpResponseRedirect(request.path_info)
