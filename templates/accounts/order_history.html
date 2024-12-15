@@ -19,7 +19,8 @@
             <tr>
               <th>Order ID #</th>
               <th>Date</th>
-              <th>Status</th>
+              <th>Status thanh toán</th>
+              <th>Status Đơn hàng</th>
               <th>Total</th>
               <th>Payment Mode</th>
               <th>Action</th>
@@ -32,9 +33,16 @@
                 <td>{{ order.order_date|date:"F j, Y" }}</td>
                 <td>
                     <span
-                    class="badge {% if order.payment_status == 'Paid' %}badge-success{% else %}badge-warning{% endif %}"
+                    class="badge {% if order.payment_status == 'Thành công' %}badge-success{% else %}badge-warning{% endif %}"
                     >
                     {{ order.payment_status }}
+                    </span>
+                </td>
+                <td>
+                    <span
+                    class="badge {% if order.order_status == 'Giao hàng thành công' %}badge-success{% else %}badge-warning{% endif %}"
+                    >
+                    {{ order.order_status }}
                     </span>
                 </td>
                 <td>${{ order.grand_total }}</td>
