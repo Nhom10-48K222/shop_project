@@ -114,7 +114,9 @@ class OrderItem(BaseModel):
     product_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
 
     def __str__(self):
-        return f"{self.product.product_name} - {self.quantity}"
+        if self.product:
+            return f"{self.product.product_name} - {self.quantity}"
+        return f"Sản phẩm không tồn tại - {self.quantity}"
 
     def get_total_price(self):
         # Use the get_product_price method from CartItem

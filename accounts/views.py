@@ -130,7 +130,7 @@ def cart(request):
         cart_obj = Cart.objects.get(is_paid=False, user=user)
 
     except Exception:
-        messages.warning(request, "Your cart is empty. Please sign in or add a product to cart.")
+        messages.warning(request, "Giỏ hàng của bạn đang trống. Vui lòng đăng nhập hoặc thêm sản phẩm vào giỏ hàng.")
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     if request.method == 'POST':
@@ -138,26 +138,26 @@ def cart(request):
         coupon_obj = Coupon.objects.filter(coupon_code__exact=coupon).first()
 
         if not coupon_obj:
-            messages.warning(request, 'Invalid coupon code.')
+            messages.warning(request, 'Mã phiếu giảm giá không hợp lệ.')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         if cart_obj and cart_obj.coupon:
-            messages.warning(request, 'Coupon already exists.')
+            messages.warning(request, 'Mã giảm giá đã tồn tại.')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         if coupon_obj and coupon_obj.is_expired:
-            messages.warning(request, 'Coupon code expired.')
+            messages.warning(request, 'Mã giảm giá đã hết hạn.')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         if cart_obj and coupon_obj and cart_obj.get_cart_total() < coupon_obj.minimum_amount:
             messages.warning(
-                request, f'Amount should be greater than {coupon_obj.minimum_amount}')
+                request, f'Số lượng phải lớn hơn {coupon_obj.minimum_amount}')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         if cart_obj and coupon_obj:
             cart_obj.coupon = coupon_obj
             cart_obj.save()
-            messages.success(request, 'Coupon applied successfully.')
+            messages.success(request, 'Phiếu giảm giá đã được áp dụng thành công.')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     if cart_obj:
@@ -166,7 +166,7 @@ def cart(request):
 
         if cart_total_in_paise < 100:
             messages.warning(
-                request, 'Total amount in cart is less than the minimum required amount (1.00 INR). Please add a product to the cart.')
+                request, 'Tổng số tiền trong giỏ hàng ít hơn số tiền tối thiểu yêu cầu (10000vnd). Vui lòng thêm sản phẩm vào giỏ hàng.')
             return redirect('index')
 
         cart_obj.save()
