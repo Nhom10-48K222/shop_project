@@ -29,7 +29,7 @@ def login_page(request):
         user_obj = User.objects.filter(username=username)
 
         if not user_obj.exists():
-            messages.warning(request, 'Account not found!')
+            messages.warning(request, 'Không tìm thấy tài khoản!')
             return HttpResponseRedirect(request.path_info)
 
         #if not user_obj[0].profile.is_email_verified:
@@ -40,7 +40,7 @@ def login_page(request):
         user_obj = authenticate(username=username, password=password)
         if user_obj:
             login(request, user_obj)
-            messages.success(request, 'Login Successfull.')
+            messages.success(request, 'Đăng nhập thành công.')
 
             # Check if the next URL is safe
             if url_has_allowed_host_and_scheme(url=next_url, allowed_hosts=request.get_host()):
@@ -48,7 +48,7 @@ def login_page(request):
             else:
                 return redirect('home')
 
-        messages.warning(request, 'Invalid credentials.')
+        messages.warning(request, 'Thông tin đăng nhập không hợp lệ.')
         return HttpResponseRedirect(request.path_info)
 
     return render(request, 'accounts/login.html')
@@ -65,7 +65,7 @@ def register_page(request):
         user_obj = User.objects.filter(username=username, email=email)
 
         if user_obj.exists():
-            messages.info(request, 'Username or email already exists!')
+            messages.info(request, 'Tên người dùng hoặc email đã tồn tại!')
             return HttpResponseRedirect(request.path_info)
 
         # if user not registered
@@ -88,7 +88,7 @@ def register_page(request):
 @login_required
 def user_logout(request):
     logout(request)
-    messages.warning(request, "Logged Out Successfully!")
+    messages.warning(request, "Đã đăng xuất thành công!")
     return redirect('home')
 
 
@@ -97,7 +97,7 @@ def add_to_cart(request, uid):
     try:
         variant = request.GET.get('size')
         if not variant:
-            messages.error(request, 'Please select a size variant!')
+            messages.error(request, 'Vui lòng chọn kích thước khác nhau!')
             return redirect(request.META.get('HTTP_REFERER'))
 
         product = get_object_or_404(Product, uid=uid)
@@ -112,11 +112,10 @@ def add_to_cart(request, uid):
             cart_item.quantity += 1
             cart_item.save()
 
-        messages.success(request, 'Item added to cart successfully.')
+        messages.success(request, 'Đã thêm sản phẩm vào giỏ hàng thành công.')
 
-    except Exception as e:
-        print(e)
-        messages.error(request, 'Error adding item to cart.')
+    except Exception:
+        messages.error(request, 'Có lỗi khi thêm sản phẩm vào giỏ hàng.')
 
     return redirect(reverse('cart'))
 
@@ -224,7 +223,7 @@ def checkout_page(request):
             context = {'order_id': order.order_id, 'order': order}
             return render(request, 'payment_success/payment_success.html', context)
         else:
-            messages.error(request, 'Address invalid')
+            messages.error(request, 'Địa chỉ không hợp lệ')
             return redirect(request.META.get('HTTP_REFERER'))
     else:
         return render(request, 'base/404.html', {'message': 'Cart not found'})
@@ -294,11 +293,11 @@ def remove_cart(request, uid):
     try:
         cart_item = get_object_or_404(CartItem, uid=uid)
         cart_item.delete()
-        messages.success(request, 'Item removed from cart.')
+        messages.success(request, 'Sản phẩm đã được xóa khỏi giỏ hàng.')
 
     except Exception as e:
         print(e)
-        messages.warning(request, 'Error removing item from cart.')
+        messages.warning(request, 'Có lỗi khi xóa sản phẩm khỏi giỏ hàng.')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -308,7 +307,7 @@ def remove_coupon(request, cart_id):
     cart.coupon = None
     cart.save()
 
-    messages.success(request, 'Coupon Removed.')
+    messages.success(request, 'Đã xóa phiếu giảm giá.')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -342,7 +341,7 @@ def success(request):
             context = {'order_id': order.order_id, 'order': order}
             return render(request, 'payment_success/payment_success.html', context)
         else:
-            messages.error(request, 'Address invalid')
+            messages.error(request, 'Địa chỉ không hợp lệ')
             return redirect(request.META.get('HTTP_REFERER'))
     else:
         return render(request, 'base/404.html', {'message': 'Cart not found'})
@@ -362,7 +361,7 @@ def profile_view(request, username):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile has been updated successfully!')
+            messages.success(request, 'Hồ sơ của bạn đã được cập nhật thành công!')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     context = {
@@ -381,10 +380,10 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Mật khẩu của bạn đã được cập nhật thành công!')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
-            messages.warning(request, 'Please correct the error below.')
+            messages.warning(request, 'Vui lòng sửa lỗi bên dưới.')
     else:
         form = CustomPasswordChangeForm(request.user)
     return render(request, 'accounts/change_password.html', {'form': form})
@@ -403,7 +402,7 @@ def update_shipping_address(request):
             shipping_address.current_address = True
             shipping_address.save()
 
-            messages.success(request, "The Address Has Been Successfully Saved/Updated!")
+            messages.success(request, "Địa chỉ đã được lưu/cập nhật thành công!")
 
             form = ShippingAddressForm()
         else:
@@ -443,7 +442,7 @@ def delete_account(request):
         user = request.user
         logout(request)
         user.delete()
-        messages.success(request, "Your account has been deleted successfully.")
+        messages.success(request, "Tài khoản của bạn đã được xóa thành công.")
         return redirect('index')
 
 
@@ -458,7 +457,7 @@ def register_page(request):
         # Kiểm tra nếu tên người dùng hoặc email đã tồn tại
         user_obj = User.objects.filter(username=username, email=email)
         if user_obj.exists():
-            messages.info(request, 'Username or email already exists!')
+            messages.info(request, 'Tên người dùng hoặc email đã tồn tại!')
             return HttpResponseRedirect(request.path_info)
 
         # Tạo người dùng mới
@@ -471,13 +470,13 @@ def register_page(request):
         user_obj = authenticate(username=username, password=password)
         if user_obj:
             login(request, user_obj)
-            messages.success(request, 'Registration successful and logged in!')
+            messages.success(request, 'Đã đăng ký thành công và đã đăng nhập!')
 
             # Chuyển hướng đến trang chủ hoặc trang tiếp theo
             next_url = request.GET.get('next', 'home')  # Mặc định đến 'index' nếu không có 'next'
             return redirect(next_url)
 
-        messages.warning(request, 'Error logging in after registration.')
+        messages.warning(request, 'Lỗi khi đăng nhập sau khi đăng ký.')
         return HttpResponseRedirect(request.path_info)
 
     return render(request, 'accounts/register.html')

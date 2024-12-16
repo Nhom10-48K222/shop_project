@@ -40,7 +40,7 @@ def get_product(request, slug):
             review.product = product
             review.user = request.user
             review.save()
-            messages.success(request, "Review added successfully!")
+            messages.success(request, "Đã thêm đánh giá thành công!")
             return redirect('get_product', slug=slug)
     else:
         review_form = ReviewForm()
@@ -79,5 +79,5 @@ def move_to_cart(request, uid):
         cart_item.quantity += 1
         cart_item.save()
 
-    messages.success(request, "Product moved to cart successfully!")
+    messages.success(request, "Sản phẩm đã được chuyển vào giỏ hàng thành công!")
     return redirect('cart')
