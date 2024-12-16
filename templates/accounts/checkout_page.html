@@ -200,7 +200,11 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                {% if cart.coupon %}
+                 <h4>Total price: ${{ cart.get_cart_total_price_after_coupon }}</h4>
+                {% else %}
                 <h4>Total price: ${{ cart.get_cart_total }}</h4>
+                {% endif %}
                 <button type="submit" class="btn btn-primary">Thanh Toán</button>
             </form>
         </div>
