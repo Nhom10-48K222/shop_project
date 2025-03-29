@@ -1,251 +1,189 @@
 {% extends "base/base.html"%}
-{% block title %}{{product.product_name}} {% endblock %}
-{% block start %} {% load crispy_forms_tags %}
+{% block title %}Hạt Macca{% endblock %}
+{% block start %}
+{% load static %}
+
 
 <style>
-  #mainImage {
-    transition: transform 0.25s ease;
-    cursor: zoom-in;
+
+  .product-container {
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
   }
 
-  .zoomed-in {
-    transform: scale(2);
-    cursor: zoom-out;
+  .product-image {
+    max-width: 400px;
+    margin: 20px;
   }
-  .btn-col{
-    background-color: blanchedalmond;
+  
+  .thumbnail-image {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    cursor: pointer;
   }
-  .btn:hover {
-    background-color:blanchedalmond !important;
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    width: fit-content;
+  }
+
+  .quantity-btn {
+    padding: 5px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .quantity-input {
+    background: none;
+    width: 50px;
+    text-align: center;
+    border: none;
+    padding: 5px;
+  }
+
+  .buy-btn {
+    background-color: #7AB259;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .shipping-infor {
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .shipping-infor i {
+    color: #7AB259;
+    margin-right: 10px;
+  }
+
+  .product-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  .main-image img {
+    width: 800px;
+    height: 400px;
+  }
+
+  .cart-btn {
+    background-color: #7AB259;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .main-content {
+    background-image: url("{% static 'images/1.png' %}");
+    min-height: 100vh;
+    padding: 40px 0;
+  }
+
+  .product-card {
+    background: transparent;
+  }
+
+  .product-details {
+    margin-left: 150px;
   }
 </style>
 
-<section class="section-content padding-y">
-  <div class="container mt-3">
-    {% include 'base/alert.html' %}
-    <!-- ============================ COMPONENT Product Details ================================= -->
-    <div class="card">
-      <div class="row no-gutters">
-        <aside class="col-md-6">
-          <!-- Gallery-Wrap -->
-          <article class="gallery-wrap">
-            <div class="text-center mt-5 ml-3 mr-3 img-big-wrap">
-              
-              <div class="carousel-inner">
-                {% for image in product.product_images.all %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                  <img id="mainImage" src="/media/{{ image.image }}" alt="{{ product.product_name }}"/>
-                </div>
-                {% endfor %}
-              </div>
-              
-              <!-- Thumnbs-Wrap -->
-              <div class="form-row thumbs-wrap mt-5 d-flex justify-content-center">
-                {% for image in product.product_images.all %}
-                  <p class="item-thumb mx-2">
-                    <img 
-                      src="/media/{{image.image}}"
-                      class="img-thumbnail"
-                      onclick="updateMainImage(this.src)"/>
-                  </p>
-                {% endfor %}
-              </div>
-              <!-- Thumnbs-Wrap End.// -->
+<div class="main-content">
+  <div class="container">
+    <div class="product-card">
+      <div class="row">
+        <!-- Left Column - Product Images -->
+        <div class="col-md-6">
+          <div class="main-image text-center">
+            <img src="{% static 'images/macca.png' %}" class="product-image" id="mainImage" alt="Hạt Macca">
+          </div>
+          <div class="thumbnails d-flex justify-content-center mt-3">
+            <img src="{% static 'images/.jpg' %}" class="thumbnail-image" onclick="updateMainImage(this.src)">
+            <img src="{% static 'images/.jpg' %}" class="thumbnail-image" onclick="updateMainImage(this.src)">
+            <img src="{% static 'images/.jpg' %}" class="thumbnail-image" onclick="updateMainImage(this.src)">
+          </div>
+        </div>
+
+        <!-- Right Column - Product Details -->
+        <div class="col-md-6">
+          <div class="product-details">
+            <h1>Hạt Macca</h1>
+            <div class="rating mb-3">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <span class="text-muted ml-2">(5.0/5.0)</span>
             </div>
-          </article>
-          <!-- Gallery-Wrap End.// -->
-        </aside>
-        <main class="col-md-6 border-left">
-          <article class="content-body">
-            <h2 class="title">{{product.product_name}}</h2>
-            <h6 class="text-muted">{{product.category}}</h6>
-
-            <div class="rating-wrap my-3">
-              <small class="label-rating text-muted">{{ product.get_rating }}</small>
-              <ul class="rating-stars">
-                <li style="width: {{ rating_percentage }}%" class="stars-active">
-                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </li>
-              </ul>
-              <small class="label-rating text-muted">{{ product.reviews.count }} reviews</small>
-              <small class="label-rating text-success">
-                <i class="fa fa-clipboard-check"></i> 154 orders
-              </small>
-            </div>
-            <!-- rating-wrap.// -->
-
-            <div class="mb-3">
-              {% if updated_price %}
-              <var class="price h4">${{ updated_price }}.00</var>
-              {% else%}
-              <var class="price h4">${{ product.price }}.00</var>
-              {% endif %}
-            </div>
-            <!-- price-detail-wrap .// -->
-
-            <p style="line-height: 2rem; margin-top: revert; text-align: justify">
-              {{product.product_desription}}
-            </p>
-            <br />
-            <dl class="row">
-              <dt class="col-sm-3">Thương Hiệu</dt>
-              <dd class="col-sm-9">Dior</dd>
-              
-              <dt class="col-sm-3">Màu sắc</dt>
-              <dd class="col-sm-9">
-                {% for color in product.color_variant.all %} 
-                  {{ color.color_name }} 
-                {% endfor %}
-              </dd>
-
-              <dt class="col-sm-3">Giao Hàng</dt>
-              <dd class="col-sm-9">Trên toàn thế giới!</dd>
-            </dl>
-
-            <hr />
-            <div class="form-row">
-              <div class="form-group mr-3">
-                <label>Số lượng</label>
-                <div class="input-group mb-3 input-spinner">
-                  <div class="input-group-prepend">
-                    <button
-                      class="btn btn-light"
-                      type="button"
-                      id="button-plus"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <input type="text" class="form-control" value="1" />
-                  <div class="input-group-append">
-                    <button
-                      class="btn btn-light"
-                      type="button"
-                      id="button-minus"
-                    >
-                      -
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {% if sorted_size_variants %}
-              <div class="form-group col-md">
-                <label>Kích cỡ</label>
-                <div class="mt-1">
-                  {% for size in sorted_size_variants %}
-
-                  <label class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" name="selected_size" value="{{ size.size_name }}" 
-                    onchange="get_correct_price('{{size.size_name}}'); updateCartUrl();" 
-                    id="size-{{ size.size_name }}"
-                    {% if selected_size == size.size_name %} checked {% endif %}
-                    class="custom-control-input" />
-                    <div class="custom-control-label">{{ size.size_name }}</div>
-                  </label>
-                  {% endfor %}
-                </div>
-              </div>
-              {% endif %}
+            
+            <div class="product-price mb-4">
+              287.000đ
             </div>
 
-            <div class="form-group d-flex justify-content-start">
-              <div class="d-sm-flex mr-2">
-                <a
-                  href="{% url 'add_to_cart' product.uid %}?size={{ selected_size }}"
-                  id="add-to-cart-btn" class="btn btn-col">
-                  <i class="fas fa-shopping-bag mr-1"></i>
-                  <span>Thêm vào giỏ hàng</span>
-                </a>
+            <div class="product-description mb-4">
+              <h5>Giới thiệu khái quát sản phẩm</h5>
+              <p>Mô tả chi tiết về sản phẩm hạt macca sẽ được hiển thị ở đây...</p>
+            </div>
+
+            <div class="shipping-infor">
+              <div class="mb-2">
+                <i class="fas fa-truck"></i>
+                Miễn phí vận chuyển
+                <div class="text-muted small">Với đơn trên 299k</div>
+              </div>
+              <div>
+                <i class="fas fa-undo"></i>
+                Return Delivery
+                <div class="text-muted small">Hoàn tiền trong 07 ngày</div>
               </div>
             </div>
-          </article>
-        </main>
-      </div>
-    </div>
 
-    <!-- Related Products Section -->
-    <h3 class="title padding-y-sm">Sản phẩm liên quan</h3>
-    {% if related_products%} 
-      {% with related_products as list_products %} 
-        {% include 'product_parts/product_list.html' %} 
-      {% endwith %}
-    {% else %}
-      <p>No related products found.</p>
-    {% endif %}
-    <!-- Related Products Section End -->
+            <div class="quantity-section mt-4">
+              <div class="quantity-control">
+                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                <input type="text" value="2" class="quantity-input" id="quantity">
+                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+              </div>
+              <button class="buy-btn mt-3">Mua ngay</button>
+            </div>
 
-    <hr />
-
-    <!-- Product Review Section -->
-    <h3 class="title padding-bottom-sm">Đánh giá</h3>
-
-    {% for review in product.reviews.all %}
-      <div class="card mb-3">
-        <div class="card-body" style="background-color: #59ee8d91">
-          <div class="form-group">
-            <p>
-              <strong>Ngày đăng: </strong>{{ review.date_added|date:"Y-m-d" }} by
-              <strong>{{ review.user.get_full_name }}</strong><br />
-              <strong>Xếp hạng: </strong>{{ review.stars }}/5<br />
-              <strong>Bình luận: </strong>{{ review.content }}
-            </p>
+            <button class="cart-btn">
+              Thêm vào giỏ hàng
+            </button>
           </div>
         </div>
       </div>
-    {% empty %}
-      <p class="padding-bottom-sm">No reviews yet...</p>
-    {% endfor %}
-
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="form-group">
-          {% if request.user.is_authenticated %}
-            <form method="POST" action="">
-              {% csrf_token %}
-              {{ review_form|crispy }}
-              <button class="btn btn-success">Submit</button>
-            </form>
-          {% else %}
-            <p>Please <a href="{% url 'login' %}"> sign in </a> Thêm đánh giá!</p>
-          {% endif %}
-        </div>
-      </div>
     </div>
-    <!-- Product Review Section End-->
-    <!-- ============================ COMPONENT Product Details End ================================= -->
   </div>
-</section>
+</div>
 
 <script>
-  function get_correct_price(selected_size) {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("size", selected_size);
-    window.location.search = urlParams.toString();
-  }
+function updateMainImage(src) {
+  document.getElementById('mainImage').src = src;
+}
 
-  function updateMainImage(src) {
-    document.getElementById('mainImage').src = src;
+function increaseQuantity() {
+  const input = document.getElementById('quantity');
+  input.value = parseInt(input.value) + 1;
+}
+
+function decreaseQuantity() {
+  const input = document.getElementById('quantity');
+  if (parseInt(input.value) > 1) {
+    input.value = parseInt(input.value) - 1;
   }
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('mainImage');
-  
-    mainImage.addEventListener('click', function() {
-      if (mainImage.classList.contains('zoomed-in')) {
-        mainImage.classList.remove('zoomed-in');
-      } else {
-        mainImage.classList.add('zoomed-in');
-      }
-    });
-  });
+}
 </script>
 
 {% endblock %}
