@@ -4,7 +4,7 @@
   /* Banner Styles */
         .banner-container {
             position: relative;
-            width: 100%;
+            width: 50%;
         }
         .banner {
             display: flex;
@@ -80,38 +80,37 @@
         margin-bottom: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
     }
-
+    .products-new{
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
     .flash-sales-header {
-        display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
     }
 
-    .flash-sales h2, .hot-products h2 {
+    .flash-sales h2, .hot-products h2, .products-new h2{
         font-size: 20px;
-        color: #2a9d8f;
+        color: #74A25A;
+        text-align: center;
     }
 
     .flash-sales h3 {
         font-size: 24px;
     }
 
-    .countdown {
-        font-size: 20px;
-        color: #e76f51;
-    }
-
-    .countdown span {
-        margin: 0 5px;
-        font-weight: bold;
-    }
-
     .product-list {
         display: flex;
-        gap: 20px;
+        gap: 60px;
         overflow-x: scroll;
+        justify-content: center;
     }
 
     .product-card {
@@ -124,14 +123,15 @@
         position: relative;
     }
 
-    .product-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
+   .product-card img {
+        width: 100%;  /* Làm cho hình ảnh chiếm toàn bộ chiều rộng của thẻ */
+        height: 200px;  /* Đặt chiều cao cố định cho hình ảnh */
+        object-fit: cover;  /* Đảm bảo rằng hình ảnh được cắt sao cho phù hợp với kích thước mà không bị méo */
+        border-radius: 5px;  /* Đảm bảo các góc của hình ảnh mềm mại */
     }
 
     .discount {
-        background-color: #e76f51;
+        background-color: red;
         color: white;
         padding: 5px;
         border-radius: 3px;
@@ -165,7 +165,7 @@
     }
 
     .add-to-cart {
-        background-color: #2a9d8f;
+        background-color: #74A25A;
         color: white;
         padding: 10px;
         border: none;
@@ -179,7 +179,7 @@
     }
 
     .view-all {
-        background-color: #2a9d8f;
+        background-color: #74A25A;
         color: white;
         padding: 10px;
         border: none;
@@ -187,20 +187,102 @@
         margin-top: 20px;
         cursor: pointer;
         display: block;
-        width: 100%;
         text-align: center;
     }
 
     .view-all:hover {
         background-color: #264653;
     }
+    .view-detail{
+        display: flex;
+        justify-content: center;
+    }
+
+    .header {
+        font-size: 24px;
+        color: #6a9a34;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .news-item {
+        display: inline-block;
+        width: 80%;
+        background-color: #e1e1e1;
+        margin: 10px 1%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        text-align: left;
+        font-size: 16px;
+        height: 500px;
+    }
+    .news-item h3 {
+        font-size: 18px;
+        color: #6a9a34;
+    }
+    .news-item p {
+        font-size: 14px;
+        color: #333;
+    }
+    .news-item a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #6a9a34;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item:hover {
+        background-color: #d0d0d0;
+    }
+    @media screen and (max-width: 768px) {
+        .news-item {
+            width: 100%;
+        }
+    }
+    .news{
+        display: flex;
+
+    }
+
+    /* Dịch vụ */
+    .services {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .service-item {
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        width: 30%;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-item img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .service-item h4 {
+        font-size: 18px;
+        color: #74A25A;
+    }
+
+    .service-item p {
+        font-size: 14px;
+        color: #333;
+    }
+
 </style>
    <!--hiển thị banner -->
   <div class="banner-container">
       <div class="banner">
-         <img class="mySlides" src="{% static 'images/banner.png' %}" alt="Khuyến mãi đặc biệt">
-         <img class="mySlides" src="{% static 'images/banner2.png' %}" alt="Sản phẩm mới">
-         <img class="mySlides" src="{% static 'images/banner3.png' %}" alt="Bộ sưu tập Yoga">
+         <img class="mySlides" src="{% static 'images/4.png' %}" alt="Khuyến mãi đặc biệt">
+         <img class="mySlides" src="{% static 'images/3.png' %}" alt="Sản phẩm mới">
      </div>
      <!-- Navigation Buttons -->
      <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
@@ -212,21 +294,16 @@
         <!-- Flash Sales Section -->
         <div class="flash-sales">
             <div class="flash-sales-header">
-                <h2>Hôm nay</h2>
-                <h3>Flash Sales</h3>
-                <div class="countdown">
-                    <span>Ngày</span><span>03</span>:
-                    <span>Giờ</span><span>23</span>:
-                    <span>Phút</span><span>19</span>:
-                    <span>Giây</span><span>56</span>
-                </div>
+                <h3 style="color: #74A25A;">Hôm nay</h3>
+                <h3 style="color: red;">Flash Sales</h3>
             </div>
+            <hr/>
             <div class="product-list">
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="discount">-40%</div>
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Hạt Macca</h4>
                     <p>$120 <span>$160</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (88)
@@ -236,8 +313,8 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="discount">-35%</div>
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/002.jpg' %}" alt="Product Image">
+                    <h4>Macca Loại 1</h4>
                     <p>$960 <span>$1600</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (75)
@@ -247,8 +324,8 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="discount">-30%</div>
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/003.jpg' %}" alt="Product Image">
+                    <h4>Macca pháp</h4>
                     <p>$370 <span>$400</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (99)
@@ -258,8 +335,8 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="discount">-25%</div>
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Macca Gia Lai</h4>
                     <p>$375 <span>$400</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (99)
@@ -267,17 +344,18 @@
                     <button class="add-to-cart">Thêm giờ hàng</button>
                 </div>
             </div>
-            <button class="view-all">Xem tất cả</button>
+            <div class ="view-detail"><button class="view-all">Xem tất cả</button></div>
         </div>
 
         <!-- Hot Products Section -->
         <div class="hot-products">
-            <h2>Combo và sản phẩm bán chạy</h2>
+            <div class="div-h2"><h2>Combo và sản phẩm bán chạy</h2></div>
+            <hr/>
             <div class="product-list">
                 <!-- Hot Product 1 -->
                 <div class="product-card">
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Hạt Dưa</h4>
                     <p>$260 <span>$360</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (65)
@@ -285,8 +363,8 @@
                 </div>
                 <!-- Hot Product 2 -->
                 <div class="product-card">
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Hạt Macca</h4>
                     <p>$960 <span>$1160</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (65)
@@ -294,8 +372,8 @@
                 </div>
                 <!-- Hot Product 3 -->
                 <div class="product-card">
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Hạt điều</h4>
                     <p>$160 <span>$170</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (65)
@@ -303,15 +381,72 @@
                 </div>
                 <!-- Hot Product 4 -->
                 <div class="product-card">
-                    <img src="product-image.jpg" alt="Product Image">
-                    <h4>Product</h4>
+                    <img src="{% static 'images/001.jpg' %}" alt="Product Image">
+                    <h4>Hạnh Nhân</h4>
                     <p>$360 <span>$450</span></p>
                     <div class="ratings">
                         <span>⭐⭐⭐⭐⭐</span> (65)
                     </div>
                 </div>
             </div>
-            <button class="view-all">Xem tất cả</button>
+            <div class="view-detail"><button class="view-all">Xem tất cả</button></div>
+        </div>
+
+<!-- Sản phẩm mới-->
+        <div class="products-new">
+            <div class="div-h2"><h2>Sản phẩm mới</h2></div>
+            <hr/>
+            <div class="">
+                <!-- Hot Product 1 -->
+                <div class="products-new">
+                    <img src="{% static 'images/2.png' %}" alt="Product Image">
+                </div>
+            </div>
+        </div>
+
+    <div class="header">Tin tức mới</div>
+     <hr/>
+    <div class="news">
+        <div class="news-item">
+            <h3>Tin tức</h3>
+            <p>Thông tin tin tức</p>
+            <a href="#">Shop Now</a>
+        </div>
+        <div class="">
+            <div class="news-item" style="width:700px; height:200px;">
+                <h3>Tin tức</h3>
+                <p>Thông tin tin tức</p>
+                <a href="#">Shop Now</a>
+            </div>
+
+            <div class="news-item" style="width:340px; height:280px;">
+                <h3>Tin tức</h3>
+                <p>Thông tin tin tức</p>
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="news-item" style="width:340px; height:280px;">
+                <h3>Tin tức</h3>
+                <p>Thông tin tin tức</p>
+                <a href="#">Shop Now</a>
+            </div>
         </div>
     </div>
+        <div class="services">
+            <div class="service-item">
+                <img src="{% static 'images/vận chuyển.jpg' %}" alt="Shipping">
+                <h4>Vận chuyển nhanh</h4>
+                <p>Miễn phí vận chuyển</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/247-1.png' %}" alt="Support">
+                <h4>Tư vấn 24/7</h4>
+                <p>24/7 hỗ trợ khách hàng</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/annin.jpg' %}" alt="Refund">
+                <h4>Hoàn tiền</h4>
+                <p>Hỗ trợ hoàn tiền trong 30 ngày</p>
+            </div>
+        </div>
+ </div>
 {% endblock %}
