@@ -32,25 +32,32 @@
     .text div {
       display: inline;
     }
-
-    .logo {
-            font-size: 42px;
-            font-weight: bold;
-            color: #A67956;
-            font-family: 'Georgia', serif;
-    }
-}
+  }
   .section-header{
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-
   }
+  .product-image-logo {
+    width: 53%;
+    height: 100%; /* Đặt ảnh chính vừa khít khung */
+    object-fit: cover; /* Giữ tỷ lệ của ảnh và cắt bớt nếu cần */
+  }
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1380px;
+    }
+}
+.navbar-nav .nav-item {
+    margin-right: 21px !important;
+    display: flex;
+    align-items: center !important;
+}
 </style>
 
 <header class="section-header">
-  <nav class="navbar navbar-dark navbar-expand-md bg-dark" style="background-color: blanchedalmond !important;">
+  <nav class="navbar navbar-dark navbar-expand-md bg-dark" style="background-color: white !important;">
     <div class="container">
       <button
         class="navbar-toggler ml-auto"
@@ -65,11 +72,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="logo" style="font-size: 42px; font-weight: bold; color: #A67956; font-family: 'Georgia', serif;">L'ROSE</li>
-          <li class="nav-item"><a class="nav-link" style="color: black; margin-left: 90px;" href="{% url 'home' %}">Trang chủ</a></li>
+          <li>
+            <img src="{% static 'images/Logo.jpg' %}" alt="#" class="product-image-logo">
+          </li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'home' %}">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'index' %}">Giới Thiệu</a></li>
           <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'index' %}">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'about' %}">Tin Tức</a></li>
           <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'contact' %}">Liên hệ</a></li>
-          <li class="nav-item"><a class="nav-link" style="color: black;" href="{% url 'about' %}">Blog</a></li>
         </ul>
       </div>
       <div class="row align-items-center">

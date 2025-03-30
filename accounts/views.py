@@ -176,7 +176,7 @@ def cart(request):
 
 @login_required
 def checkout_page(request):
-    cart_id = request.GET.get('card_id', None)  # Lấy `cart_id` từ query string
+    cart_id = request.GET.get('card_id', None)
     cart = Cart.objects.filter(uid=cart_id).first()
 
     if not cart:

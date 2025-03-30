@@ -68,143 +68,132 @@
             font-size: 1em;
             color: #6c757d;
         }
-        /* css sản phẩm sale*/
-         .product-card {
-            width: 300px; /* Đặt chiều rộng cố định */
-            height: 555px; /* Đặt chiều cao cố định */
-            overflow: hidden; /* Để đảm bảo nội dung không tràn */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            position: relative;
-            padding: 10px;
-            background-color: #fff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        .product-card img:hover {
-            transform: scale(1.1);
-        }
 
-        .sale-badge {
-            top: 2px;
-            left: 2px;
-            position: absolute;
-            background: red;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 5px;
-        }
-        .product-price {
-            font-size: 18px;
-            color: red;
-            font-weight: bold;
-        }
-        .product-old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        .online-badge {
-            background: #ff5722;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            position: absolute;
-            bottom: 193px;
-            left: 10px;
-            border-radius: 5px;
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng mượt */
-        }
-        .badge-mua-online:hover {
-            transform: translateX(-50%) scale(1.1); /* Phóng to nhẹ khi hover */
-            background-color: #e63946; /* Thay đổi màu nền khi hover */
-        }
-        .product-thumbnails img {
-            width: 40px;
-            height: 40px;
-            margin: 2px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .product-thumbnails img:hover {
-            border-color: red;
-            transform: scale(1.2);
-        }
-        .product-title, .product-price {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
 
-        .product-title:hover, .product-price:hover {
-            transform: translateY(-3px);
-            color: #007bff;
-        }
-        .card{
-            transition: transform 0.3s ease;
-        }
-        .card:hover{
-            transform: scale(0.8);
-        }
-        .product-image-container {
-            width: 100%;
-            height: 350px; /* Đặt chiều cao cố định cho khung ảnh */
-            position: relative;
-            margin-bottom: 10px;
-            overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài khung */
-        }
+    .flash-sales, .hot-products {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .product-image {
-            width: 100%;
-            height: 100%; /* Đặt ảnh chính vừa khít khung */
-            object-fit: cover; /* Giữ tỷ lệ của ảnh và cắt bớt nếu cần */
-        }
-        .price{
-            margin-bottom: 50px;
-        }
-        /* Style cho lớp phủ (overlay) */
-        .product-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Màu đen trong suốt */
-            color: #fff; /* Màu chữ trắng */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            opacity: 0; /* Ẩn lớp phủ ban đầu */
-            transition: opacity 0.3s ease; /* Hiệu ứng mượt */
-        }
+    .flash-sales-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
 
-        /* Hiển thị lớp phủ khi hover */
-        .product-image-container:hover .product-overlay {
-            opacity: 1;
-        }
+    .flash-sales h2, .hot-products h2 {
+        font-size: 20px;
+        color: #2a9d8f;
+    }
 
-        /* Đảm bảo toàn bộ khu vực có thể click */
-        .product-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
+    .flash-sales h3 {
+        font-size: 24px;
+    }
+
+    .countdown {
+        font-size: 20px;
+        color: #e76f51;
+    }
+
+    .countdown span {
+        margin: 0 5px;
+        font-weight: bold;
+    }
+
+    .product-list {
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+    }
+
+    .product-card {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        width: 200px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .discount {
+        background-color: #e76f51;
+        color: white;
+        padding: 5px;
+        border-radius: 3px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .product-card h4 {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .product-card p {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .product-card p span {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .ratings {
+        margin-top: 10px;
+    }
+
+    .ratings span {
+        font-size: 14px;
+        color: #f1c40f;
+    }
+
+    .add-to-cart {
+        background-color: #2a9d8f;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+        background-color: #264653;
+    }
+
+    .view-all {
+        background-color: #2a9d8f;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .view-all:hover {
+        background-color: #264653;
+    }
 </style>
    <!--hiển thị banner -->
   <div class="banner-container">
@@ -218,181 +207,111 @@
      <button class="next" onclick="plusDivs(1)">&#10095;</button>
   </div>
 <!--sản phẩm sale-->
-<div class="container mt-4">
-    <hr/>
-    <h1 class="text-center mb-4">Sản phẩm HOT</h1>
-    <hr/>
-    <div class="row">
-        <div class="col-md-3 mb-4">
-            <div class="product-card">
-                 <div class="product-image-container">
-                     <a href="{% url 'index' %}" class="product-link">
-                        <span class="sale-badge">-20%</span>
-                        <img src="{% static 'images/set2.jpg' %}" alt="{{ product.name }}" class="product-image">
-                         <div class="product-overlay">
-                            <span>Xem sản phẩm</span>
-                        </div>
-                    </a>
-                 </div>
-                <span class="online-badge">Giá chỉ áp dụng mua online</span>
-                <h5 class="product-title">Set váy lụa cao cấp</h5>
-                <p class="price">
-                    <span class="product-price">22,000đ</span>
-                    <del class="product-old-price">70,000đ</del>
-                </p>
-                <div class="product-thumbnails d-flex justify-content-center mt-2">
-                    <img src="{% static 'images/set1.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set2.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set3.jpg' %}" alt="Thumbnail">
+
+ <div class="container">
+        <!-- Flash Sales Section -->
+        <div class="flash-sales">
+            <div class="flash-sales-header">
+                <h2>Hôm nay</h2>
+                <h3>Flash Sales</h3>
+                <div class="countdown">
+                    <span>Ngày</span><span>03</span>:
+                    <span>Giờ</span><span>23</span>:
+                    <span>Phút</span><span>19</span>:
+                    <span>Giây</span><span>56</span>
                 </div>
             </div>
+            <div class="product-list">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="discount">-40%</div>
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$120 <span>$160</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (88)
+                    </div>
+                    <button class="add-to-cart">Thêm giờ hàng</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="discount">-35%</div>
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$960 <span>$1600</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (75)
+                    </div>
+                    <button class="add-to-cart">Thêm giờ hàng</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="discount">-30%</div>
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$370 <span>$400</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (99)
+                    </div>
+                    <button class="add-to-cart">Thêm giờ hàng</button>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="discount">-25%</div>
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$375 <span>$400</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (99)
+                    </div>
+                    <button class="add-to-cart">Thêm giờ hàng</button>
+                </div>
+            </div>
+            <button class="view-all">Xem tất cả</button>
         </div>
-        <div class="col-md-3 mb-4">
-             <div class="product-card">
-                 <div class="product-image-container">
-                     <a href="{% url 'index' %}" class="product-link">
-                        <span class="sale-badge">-15%</span>
-                        <img src="{% static 'images/set8.jpg' %}" alt="{{ product.name }}" class="product-image">
-                         <div class="product-overlay">
-                            <span>Xem sản phẩm</span>
-                        </div>
-                    </a>
-                 </div>
-                <span class="online-badge">Giá chỉ áp dụng mua online</span>
-                <h5 class="product-title">Set Đồ Thu Đông</h5>
-                <p class="price">
-                    <span class="product-price">30,000đ</span>
-                    <del class="product-old-price">50,000đ</del>
-                </p>
-                <div class="product-thumbnails d-flex justify-content-center mt-2">
-                    <img src="{% static 'images/set1.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set2.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set8.jpg' %}" alt="Thumbnail">
+
+        <!-- Hot Products Section -->
+        <div class="hot-products">
+            <h2>Combo và sản phẩm bán chạy</h2>
+            <div class="product-list">
+                <!-- Hot Product 1 -->
+                <div class="product-card">
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$260 <span>$360</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (65)
+                    </div>
+                </div>
+                <!-- Hot Product 2 -->
+                <div class="product-card">
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$960 <span>$1160</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (65)
+                    </div>
+                </div>
+                <!-- Hot Product 3 -->
+                <div class="product-card">
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$160 <span>$170</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (65)
+                    </div>
+                </div>
+                <!-- Hot Product 4 -->
+                <div class="product-card">
+                    <img src="product-image.jpg" alt="Product Image">
+                    <h4>Product</h4>
+                    <p>$360 <span>$450</span></p>
+                    <div class="ratings">
+                        <span>⭐⭐⭐⭐⭐</span> (65)
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3 mb-4">
-             <div class="product-card">
-                 <div class="product-image-container">
-                     <a href="{% url 'index' %}" class="product-link">
-                        <span class="sale-badge">-30%</span>
-                        <img src="{% static 'images/set7.jpg' %}" alt="{{ product.name }}" class="product-image">
-                         <div class="product-overlay">
-                            <span>Xem sản phẩm</span>
-                        </div>
-                    </a>
-                 </div>
-                <span class="online-badge">Giá chỉ áp dụng mua online</span>
-                <h5 class="product-title">Set đồ phong cách cổ điển</h5>
-                <p class="price">
-                    <span class="product-price">32,000đ</span>
-                    <del class="product-old-price">99,000đ</del>
-                </p>
-                <div class="product-thumbnails d-flex justify-content-center mt-2">
-                    <img src="{% static 'images/set1.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set2.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set7.jpg' %}" alt="Thumbnail">
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mb-4">
-             <div class="product-card">
-                 <div class="product-image-container">
-                     <a href="{% url 'index' %}" class="product-link">
-                        <span class="sale-badge">-10%</span>
-                        <img src="{% static 'images/set6.jpg' %}" alt="{{ product.name }}" class="product-image">
-                         <div class="product-overlay">
-                            <span>Xem sản phẩm</span>
-                        </div>
-                    </a>
-                 </div>
-                <span class="online-badge">Giá chỉ áp dụng mua online</span>
-                <h5 class="product-title">Set Đồ Trẻ Trung</h5>
-                <p class="price">
-                    <span class="product-price">25,000đ</span>
-                    <del class="product-old-price">60,000đ</del>
-                </p>
-                <div class="product-thumbnails d-flex justify-content-center mt-2">
-                    <img src="{% static 'images/set1.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set2.jpg' %}" alt="Thumbnail">
-                    <img src="{% static 'images/set6.jpg' %}" alt="Thumbnail">
-                </div>
-            </div>
+            <button class="view-all">Xem tất cả</button>
         </div>
     </div>
-</div>
-<!--blog quảng cáo-->
-  <div class="container">
-        <hr/>
-            <h1 class="text-center">L'ROSE</h1>
-            <h5 class="text-center">ĐÓN ĐẦU XU HƯỚNG, ĐỊNH HÌNH PHONG CÁCH</h5>
-        <hr/>
-            <div class="row">
-                <div class="post">
-                    <div class="card">
-                        <a href="{% url 'article_detail' %}" class="product-link">
-                            <img src="{% static 'images/set1.jpg' %}" alt="Image Description" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">MINIMAL CHIC</h5>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                         <a href="{% url 'article_detail' %}" class="product-link">
-                            <img src="{% static 'images/set2.jpg' %}" alt="Image Description" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">3 CÁCH DIỆN SƠ MI ĐẸP ĐÚNG CHUẨN</h5>
-                            </div>
-                         </a>
-                    </div>
-                    <div class="card">
-                        <a href="{% url 'article_detail' %}" class="product-link">
-                            <img src="{% static 'images/set3.jpg' %}" alt="Image Description" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">SUIT - XU HƯỚNG THỜI TRANG CHO QUÝ CÔ QUYỀN LỰC</h5>
-                            </div>
-                        </a>
-                    </div>
-                     <div class="card">
-                         <a href="{% url 'article_detail' %}" class="product-link">
-                            <img src="{% static 'images/set8.jpg' %}" alt="Image Description" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">SANG TRONG QUÝ PHÁI</h5>
-                            </div>
-                         </a>
-                    </div>
-                </div>
-        </div>
-    </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      x[slideIndex-1].style.display = "block";
-    }
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const thumbnails = document.querySelectorAll('.product-thumbnails img');
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function () {
-                const mainImage = this.closest('.product-card').querySelector('img');
-                mainImage.src = this.src; // Thay đổi ảnh chính
-            });
-        });
-    });
-</script>
 {% endblock %}

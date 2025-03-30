@@ -40,10 +40,10 @@
                   <tr>
                     <td>{{ item.product.product_name }}</td>
                     <td>{{ item.size_variant.size_name|default:"N/A" }}</td>
-                    {% if item.size_variant %} 
+                    {% if item.size_variant %}
                       {% for color in item.product.color_variant.all %}
                         <td>{{ color.color_name|default:"N/A" }}</td>
-                      {% endfor %} 
+                      {% endfor %}
                     {% endif %}
                     <td>{{ item.quantity }}</td>
                     <td>$ {{ item.product_price }}</td>
