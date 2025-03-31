@@ -409,7 +409,7 @@ p:last-child {
 .section-footer ul li {
   margin-bottom: 5px; }
 .section-footer ul a {
-  color: inherit; }
+  color: #74A25A; }
   .section-footer ul a:hover {
     color: #3167eb; }
 .section-footer .logo-footer {
@@ -506,7 +506,7 @@ p:last-child {
   background-color: #fff;
   border-color: #e4e4e4; }
   .btn-light i {
-    color: #969696; }
+    color: #74A25A; }
   .btn-light:hover {
     background-color: #fff;
     border-color: #989898; }

@@ -4,7 +4,8 @@
   /* Banner Styles */
         .banner-container {
             position: relative;
-            width: 50%;
+            width: 100%;
+            height: auto;
         }
         .banner {
             display: flex;
@@ -279,9 +280,9 @@
 
 </style>
    <!--hiển thị banner -->
-  <div class="banner-container">
+  <div class="banner-container"style="padding-top: 150px;">
       <div class="banner">
-         <img class="mySlides" src="{% static 'images/4.png' %}" alt="Khuyến mãi đặc biệt">
+         <img class="mySlides" src="{% static 'images/4.png' %}" alt="Khuyến mãi đặc biệt" style="width: 100%; height: auto;">
          <img class="mySlides" src="{% static 'images/3.png' %}" alt="Sản phẩm mới">
      </div>
      <!-- Navigation Buttons -->

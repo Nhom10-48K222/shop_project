@@ -54,10 +54,20 @@
     display: flex;
     align-items: center !important;
 }
+.navbar{
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+.scrolled {
+        background-color: white !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 </style>
 
 <header class="section-header">
-  <nav class="navbar navbar-dark navbar-expand-md bg-dark" style="background-color: white !important;">
+  <nav class="navbar navbar-expand-md bg-transparent position-fixed top-0 left-0 right-0" id="scroll-navbar">
     <div class="container">
       <button
         class="navbar-toggler ml-auto"
@@ -164,3 +174,14 @@
     </div>
   </nav>
 </header>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.getElementById("scroll-navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>

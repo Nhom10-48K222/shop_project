@@ -21484,11 +21484,11 @@ blockquote span {
 
 .footer .single-footer.f-link ul li a:hover {
     padding-left: 5px;
-    color: #0167f3
+    color: #74A25A
 }
 
 .footer .single-footer.f-contact .phone {
-    color: #d6d6d6
+    color: #74A25A
 }
 
 .footer .single-footer.f-contact ul {
@@ -21498,7 +21498,7 @@ blockquote span {
 .footer .single-footer.f-contact ul li {
     display: block;
     margin-bottom: 10px;
-    color: #d6d6d6
+    color: #74A25A
 }
 
 .footer .single-footer.f-contact ul li span {
@@ -21514,7 +21514,7 @@ blockquote span {
 }
 
 .footer .single-footer.f-contact .mail a:hover {
-    color: #0167f3
+    color: #74A25A
 }
 
 .footer .single-footer.our-app .app-btn li {
@@ -21536,7 +21536,7 @@ blockquote span {
     padding: 15px 30px 15px 60px;
     color: #fff;
     transition: all .3s ease;
-    background-color: #ffffff0f
+    background-color: #74A25A
 }
 
 .footer .single-footer.our-app .app-btn li a i {
@@ -21551,7 +21551,7 @@ blockquote span {
 .footer .single-footer.our-app .app-btn li a .small-title {
     font-size: 13px;
     display: block;
-    color: #fff;
+    color: #74A25A
     transition: all .3s ease
 }
 
